@@ -1,3 +1,13 @@
 server:
-    port: 80
-    context-path: /
+  port: 80
+  context-path: /
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://139.199.220.254:3306/service
+    username: root
+    password: 314159
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
