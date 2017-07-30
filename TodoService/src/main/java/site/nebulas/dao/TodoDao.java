@@ -15,4 +15,6 @@ public interface TodoDao extends JpaRepository<Todo,Integer>{
      *  否则findByUserName(String username)User对象的name属性
      */
     public List<Todo> findById(Integer id);
+
+    List<Todo> findByState(String state);
 }
