@@ -11,3 +11,8 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+
+nebula:
+  imageBaseUrl: image.nebulous.cn/v1/image/
+  imageBasePath: /home/public/images

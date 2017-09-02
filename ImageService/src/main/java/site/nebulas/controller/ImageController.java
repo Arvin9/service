@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import site.nebulas.entity.RetMsg;
@@ -24,23 +25,14 @@ import java.util.List;
 @RequestMapping(value = "/v1/image")
 public class ImageController {
     Log log = LogFactory.getLog(this.getClass());
+
+    @Value("${nebula.imageBasePath}")
     private String IMAGE_BASE_PATH; // 存储文件路径
-    private final String IMAGE_BASE_URL = "image.nebulas.top/v1/image/"; // 访问地址
+    @Value("${nebula.imageBaseUrl}")
+    private String IMAGE_BASE_URL; // 访问地址
 
     @Autowired
     private ImageService imageService;
-
-    public ImageController() {
-        String separator = File.separator;
-        // windows系统
-        if("\\".equals(separator)) {
-            IMAGE_BASE_PATH = "D:\\file";
-        }
-        // linux 系统
-        if("/".equals(separator)) {
-            IMAGE_BASE_PATH = "/home/public/images";
-        }
-    }
 
     /**
      * 根据id获取图片
