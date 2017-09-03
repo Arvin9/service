@@ -2,6 +2,7 @@
 > MicService
 
 ## TODO
+- 图片标记类别
 
 
 
