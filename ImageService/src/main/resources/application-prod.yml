@@ -14,5 +14,7 @@ spring:
 
 
 nebula:
-  imageBaseUrl: image.nebulous.cn/v1/image/
+  imageBaseUrl: http://image.nebulous.cn/v1/image/
   imageBasePath: /home/public/images
+  qrCodeBaseUrl: http://image.nebulous.cn/v1/image/code
+  qrCodeBasePath: /home/public/images/code

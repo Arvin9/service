@@ -13,5 +13,7 @@ spring:
     show-sql: true
 
 nebula:
-  imageBaseUrl: localhost/v1/image/
+  imageBaseUrl: http://localhost/v1/image/
   imageBasePath: D:\file
+  qrCodeBaseUrl: http://localhost/v1/image/code
+  qrCodeBasePath: D:\file\code
