@@ -1,0 +1,21 @@
+server:
+  port: 80
+  context-path: /
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/service?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 314159
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mail:
+    host: smtp.163.com
+    username: arvin_fj@163.com
+    password: flxpdkbukjonbbah
+    default-encoding: UTF-8
+nebula:
+  mail:
+    from: arvin_fj@163.com
