@@ -7,7 +7,6 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.alibaba.fastjson.JSON;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +35,6 @@ public class QrcodeService {
   private ImageService imageService;
 
   public RetMsg createQrcode(QrCode qrCode) {
-    QRCODE_BASE_PATH = "D:\\file\\code";
-    QRCODE_BASE_URL = "http://localhost/v1/image/code";
     RetMsg retMsg = new RetMsg();
     Image image = new Image();
     image.setCreatTime(DateUtil.getTime());
