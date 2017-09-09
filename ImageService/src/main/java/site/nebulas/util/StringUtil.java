@@ -8,8 +8,7 @@ public class StringUtil {
     return false;
   }
   public static boolean isIntNull(int i) {
-    Integer integer = new Integer(i);
-    if (null == integer) {
+    if (0 == i) {
       return true;
     }
     return false;

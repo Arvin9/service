@@ -8,6 +8,8 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.alibaba.fastjson.JSON;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,7 @@ import site.nebulas.util.UUIDUtil;
 
 @Service
 public class QrcodeService {
+  Logger log = LoggerFactory.getLogger(QrcodeService.class);
 
   @Value("${nebula.qrCodeBasePath}")
   private String QRCODE_BASE_PATH; // 存储文件路径
@@ -45,23 +48,22 @@ public class QrcodeService {
       return retMsg;
     }
     if (StringUtil.isIntNull(qrCode.getWidth())) {
-      qrCode.setWidth(800);
+      qrCode.setWidth(350);
     }
     if (StringUtil.isIntNull(qrCode.getHeight())) {
-      qrCode.setHeight(800);
+      qrCode.setHeight(350);
     }
     if (StringUtil.isNull(qrCode.getFormat())) {
       qrCode.setFormat("png");
     }
-
     // 定义二维码参数
     HashMap hints = new HashMap();
     hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
     hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.Q);
-    hints.put(EncodeHintType.MARGIN, 2);
+    hints.put(EncodeHintType.MARGIN, 1);
 
     try {
-      BitMatrix bitMatrix = new MultiFormatWriter().encode(qrCode.getContent(), BarcodeFormat.QR_CODE, qrCode.getWidth(), qrCode.getHeight());
+      BitMatrix bitMatrix = new MultiFormatWriter().encode(qrCode.getContent(), BarcodeFormat.QR_CODE, qrCode.getWidth(), qrCode.getHeight(), hints);
       String filename = UUIDUtil.getRandomUUID();
       String filenamefull = filename + '.' + qrCode.getFormat();
       String savePath = QRCODE_BASE_PATH + File.separator + filenamefull; // 存储路径

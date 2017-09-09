@@ -23,6 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/v1/image")
+@CrossOrigin(origins = "*")
 public class ImageController {
     Log log = LogFactory.getLog(this.getClass());
 
