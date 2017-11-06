@@ -21,8 +21,10 @@ public class RedisTest {
   @Test
   public void test() {
     stringRedisTemplate.opsForValue().set("aaa", "111");
+
     //stringRedisTemplate.opsForList().leftPush("mail", "11");
     System.out.print(stringRedisTemplate.opsForList().leftPop("mail"));
+
     ValueOperations<String, String> operations = redisTemplate.opsForValue();
     operations.set("ccc", "222");
     System.out.print("输出：" + operations.get("ccc") + "\n");
